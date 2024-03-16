@@ -1,4 +1,4 @@
-export enum ScreenId = {
+export enum ScreenId {
 	START = "START",
 	MAINMENU = "MAINMENU",
 	CLIENTSEARCHFORM = "CLIENTSEARCHFORM",
@@ -7,41 +7,41 @@ export enum ScreenId = {
 	CLIENTLISTFORM = "CLIENTLISTFORM"
 }
 
-export enum ShowClientListResultEnum = {
+export enum ShowClientListResultEnum {
 	OK = "OK"
 }
 
-export enum FindClientResultEnum = {
+export enum FindClientResultEnum {
 	OK = "OK",
 	NOTOK = "NOTOK"
 }
 
-export enum RoleEnum = {
+export enum RoleEnum {
 	CASHIER = "CASHIER"
 }
 
-export enum ClientSearchEnum = {
+export enum ClientSearchEnum {
 	VALID = "VALID",
 	INVALID = "INVALID"
 }
 
-export enum AddClientResultEnum = {
+export enum AddClientResultEnum {
 	OK = "OK"
 }
 
-export enum RoleEnum = {
+export enum RoleEnum {
 	CASHIER = "CASHIER"
 }
 
-export enum RolebisEnum = {
+export enum RolebisEnum {
 	CLIENT = "CLIENT"
 }
 
-export enum InvokeResultEnum = {
+export enum InvokeResultEnum {
 	OK = "OK"
 }
 
-export enum InvokeResultEnum = {
+export enum InvokeResultEnum {
 	NOTOK = "NOTOK"
 }
 

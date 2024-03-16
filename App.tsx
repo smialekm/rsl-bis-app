@@ -37,11 +37,8 @@ const iClientList: IClientList = new ClientListProxy();
 const iRolebis: IRolebis = new RolebisProxy();
 
 const start: UCStart = new UCStart(pMainMenu);
-
 const findClient: UCFindClient = new UCFindClient(pClientSearchForm, pClientWindow, pErrorMessage, iRole, iDefaultClientSearch, iClientSearch, iClient, iFiniteElementMethodAlgoritm);
-
 const addClient: UCAddClient = new UCAddClient();
-
 const showClientList: UCShowClientList = new UCShowClientList(pClientListForm, iClientList, iRolebis);
 
 function switchView(state: AppState, action: ScreenId) {
