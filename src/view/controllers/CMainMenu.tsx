@@ -1,7 +1,7 @@
 import { MainMenuState, ClientType, Role, Rolebis } from "../../viewmodel/ViewModel";
-import { UCStart } from "../usecases/UCStart";
-import { UCFindClient } from "../usecases/UCFindClient";
-import { UCShowClientList } from "../usecases/UCShowClientList";
+import { UCStart } from "../../usecases/UCStart";
+import { UCFindClient } from "../../usecases/UCFindClient";
+import { UCShowClientList } from "../../usecases/UCShowClientList";
 
 export function CMainMenu(
 	state: MainMenuState,

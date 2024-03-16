@@ -1,3 +1,4 @@
+import { result: StartAt02UnionEnum } from "../../viewmodel/ViewModel";
 import { PMainMenu } from "../view/presenters/PMainMenu";
 
 export class UCStart{
@@ -11,10 +12,10 @@ export class UCStart{
 
 	selectApplication(returnTo?: Function) {
 		if (undefined != returnTo) this.returnTo = returnTo;
-		pMainMenu.showMainMenu();
+		this.pMainMenu.showMainMenu();
 	}
 
 	invokedAt02(result: StartAt02UnionEnum) {
-		pMainMenu.showMainMenu();
+		this.pMainMenu.showMainMenu();
 	}
 }

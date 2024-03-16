@@ -1,3 +1,4 @@
+import { role !enum, role: Role, client list, rolebis: Rolebis, rolebis !enum, result: ShowClientListAtA1UnionEnum } from "../../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
 import { Rolebis } from "../viewmodel/ViewModel";
 import { IClientList } from "../services/IClientList";
@@ -27,7 +28,7 @@ export class UCShowClientList{
 		if (undefined != returnTo) this.returnTo = returnTo;
 		this.rolebis = rolebis;
 		ClientList clientList = this.iClientList.readClientList(rolebis);
-		pClientListForm.showClientListForm(clientList);
+		this.pClientListForm.showClientListForm(clientList);
 	}
 
 	selectClose() {
@@ -40,11 +41,11 @@ export class UCShowClientList{
 		if (result == "OK" && RolebisEnum.Client == rolebisEnum) {
 			Client client = this.iClient.readClient(clientSearch, clientType);
 			ClientList clientList = this.iClientList.readClientList(rolebis);
-			pClientListForm.showClientListForm(clientList);
+			this.pClientListForm.showClientListForm(clientList);
 		} else if (result == "NOTOK") {
 			ClientList clientList = this.iClientList.readClientList(rolebis);
 			ClientList clientList = this.iClientList.readClientList(rolebis);
-			pClientListForm.showClientListForm(clientList);
+			this.pClientListForm.showClientListForm(clientList);
 		}
 	}
 }

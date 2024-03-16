@@ -1,5 +1,5 @@
 import { ClientWindowState } from "../../viewmodel/ViewModel";
-import { UCFindClient } from "../usecases/UCFindClient";
+import { UCFindClient } from "../../usecases/UCFindClient";
 
 export function CClientWindow(
 	state: ClientWindowState,

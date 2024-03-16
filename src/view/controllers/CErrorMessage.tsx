@@ -1,5 +1,5 @@
 import { ErrorMessageState } from "../../viewmodel/ViewModel";
-import { UCFindClient } from "../usecases/UCFindClient";
+import { UCFindClient } from "../../usecases/UCFindClient";
 
 export function CErrorMessage(
 	state: ErrorMessageState,

@@ -1,3 +1,4 @@
+import {  } from "../../viewmodel/ViewModel";
 
 export class UCAddClient{
 	returnTo?: Function;

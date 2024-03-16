@@ -1,3 +1,4 @@
+import { role !enum, role: Role, default client search, clientType: ClientType, client search !enum, clientSearch: ClientSearch, short, client } from "../../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";
@@ -42,16 +43,16 @@ export class UCFindClient{
 		if (undefined != returnTo) this.returnTo = returnTo;
 		this.clientType = clientType;
 		DefaultClientSearch defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
-		pClientSearchForm.showClientSearchForm(defaultClientSearch);
+		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
 		ClientSearchEnum clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
 		if (ClientSearchEnum.Valid == clientSearchEnum) {
 			Client client = this.iClient.readClient(clientSearch, clientType);
-			pClientWindow.showClientWindow(client);
+			this.pClientWindow.showClientWindow(client);
 		} else if (ClientSearchEnum.Invalid == clientSearchEnum) {
-			pErrorMessage.showErrorMessage();
+			this.pErrorMessage.showErrorMessage();
 		}
 	}
 
@@ -68,6 +69,6 @@ export class UCFindClient{
 
 	selectRepeat() {
 		Client client = this.iClient.readClient(clientSearch, clientType);
-		pClientWindow.showClientWindow(client);
+		this.pClientWindow.showClientWindow(client);
 	}
 }

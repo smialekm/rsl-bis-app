@@ -1,7 +1,7 @@
 import { ClientListFormState, ClientType, Role } from "../../viewmodel/ViewModel";
-import { UCShowClientList } from "../usecases/UCShowClientList";
-import { UCFindClient } from "../usecases/UCFindClient";
-import { UCAddClient } from "../usecases/UCAddClient";
+import { UCShowClientList } from "../../usecases/UCShowClientList";
+import { UCFindClient } from "../../usecases/UCFindClient";
+import { UCAddClient } from "../../usecases/UCAddClient";
 
 export function CClientListForm(
 	state: ClientListFormState,
