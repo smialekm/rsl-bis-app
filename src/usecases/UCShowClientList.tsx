@@ -3,6 +3,8 @@ import { PClientListForm } from "../view/presenters/PClientListForm";
 import { IRole } from "../services/IRole";
 import { IClientList } from "../services/IClientList";
 import { IRolebis } from "../services/IRolebis";
+import { IClient } from "../services/IClient";
+import { IClientList } from "../services/IClientList";
 
 export class UCShowClientList{
 	pClientListForm: PClientListForm;
@@ -10,16 +12,20 @@ export class UCShowClientList{
 	iRole: IRole;
 	iClientList: IClientList;
 	iRolebis: IRolebis;
+	iClient: IClient;
+	iClientList: IClientList;
 
 	returnTo?: Function;
 
 	rolebis: Rolebis = new Rolebis();
 
-	constructor(pClientListForm: PClientListForm, iRole: IRole, iClientList: IClientList, iRolebis: IRolebis) {
+	constructor(pClientListForm: PClientListForm, iRole: IRole, iClientList: IClientList, iRolebis: IRolebis, iClient: IClient, iClientList: IClientList) {
 		this.pClientListForm = pClientListForm;
 		this.iRole = iRole;
 		this.iClientList = iClientList;
 		this.iRolebis = iRolebis;
+		this.iClient = iClient;
+		this.iClientList = iClientList;
 	}
 
 	preconditionCheck(role: Role): boolean {
