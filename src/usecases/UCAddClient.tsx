@@ -1,6 +1,6 @@
 
 export class UCAddClient{
-	returnTo: Function = null;
+	returnTo?: Function;
 
 	constructor() {
 	}

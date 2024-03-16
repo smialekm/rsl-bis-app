@@ -29,10 +29,6 @@ export enum AddClientResultEnum {
 	OK = "OK"
 }
 
-export enum RoleEnum {
-	CASHIER = "CASHIER"
-}
-
 export enum RolebisEnum {
 	CLIENT = "CLIENT"
 }
@@ -90,7 +86,7 @@ export class Rolebis {
 }
 
 export class ClientList {
-	clients: Client[] = new [];
+	clients: Client[] = [];
 }
 
 export class ClientListFormState {
