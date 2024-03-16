@@ -19,7 +19,7 @@ export class UCFindClient{
 	iClient: IClient;
 	iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm;
 
-	returnTo?: Function;
+	returnTo: Function = new Function();
 
 	clientType?: ClientType;
 
@@ -39,7 +39,7 @@ export class UCFindClient{
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
-		if (undefined != returnTo) this.returnTo = returnTo;
+		if (undefined != this.returnTo) this.returnTo = returnTo;
 		this.clientType = clientType;
 		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
 		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);

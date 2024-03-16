@@ -9,7 +9,7 @@ export class UCShowClientList{
 	iClientList: IClientList;
 	iRolebis: IRolebis;
 
-	returnTo?: Function;
+	returnTo: Function = new Function();
 
 	rolebis?: Rolebis;
 
@@ -24,7 +24,7 @@ export class UCShowClientList{
 	}
 
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
-		if (undefined != returnTo) this.returnTo = returnTo;
+		if (undefined != this.returnTo) this.returnTo = returnTo;
 		this.rolebis = rolebis;
 		let clientList = this.iClientList.readClientList(rolebis);
 		this.pClientListForm.showClientListForm(clientList);

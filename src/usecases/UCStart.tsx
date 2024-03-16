@@ -4,14 +4,14 @@ import { PMainMenu } from "../view/presenters/PMainMenu";
 export class UCStart{
 	pMainMenu: PMainMenu;
 
-	returnTo?: Function;
+	returnTo: Function = new Function();
 
 	constructor(pMainMenu: PMainMenu) {
 		this.pMainMenu = pMainMenu;
 	}
 
 	selectApplication(returnTo?: Function) {
-		if (undefined != returnTo) this.returnTo = returnTo;
+		if (undefined != this.returnTo) this.returnTo = returnTo;
 		this.pMainMenu.showMainMenu();
 	}
 
