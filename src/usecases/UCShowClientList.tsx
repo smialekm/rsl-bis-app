@@ -11,7 +11,7 @@ export class UCShowClientList{
 
 	returnTo?: Function;
 
-	rolebis?: Rolebis = new Rolebis();
+	rolebis: Rolebis = new Rolebis();
 
 	constructor(pClientListForm: PClientListForm, iClientList: IClientList, iRolebis: IRolebis) {
 		this.pClientListForm = pClientListForm;
@@ -20,7 +20,7 @@ export class UCShowClientList{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return this.iRole.checkRole(role);
+		return this.iRole.checkRole(role) == CASHIER;
 	}
 
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {

@@ -21,7 +21,7 @@ export class UCFindClient{
 
 	returnTo?: Function;
 
-	clientType?: ClientType = new ClientType();
+	clientType: ClientType = new ClientType();
 
 	constructor(pClientSearchForm: PClientSearchForm, pClientWindow: PClientWindow, pErrorMessage: PErrorMessage, iRole: IRole, iDefaultClientSearch: IDefaultClientSearch, iClientSearch: IClientSearch, iClient: IClient, iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm) {
 		this.pClientSearchForm = pClientSearchForm;
@@ -35,7 +35,7 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return this.iRole.checkRole(role);
+		return this.iRole.checkRole(role) == CASHIER;
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
