@@ -46,7 +46,7 @@ export enum InvokeResultEnum {
 }
 
 export class AppState {
-	screen: ScreenId = new ScreenId;
+	screen: ScreenId = ScreenId.STARTnew ScreenId();
 }
 
 export class MainMenuState {
@@ -60,27 +60,27 @@ export class ClientType {
 
 export class DefaultClientSearch {
 	name: string = "";
-	age: bigint = 0n;
+	age: bigint = BigInt(0);
 }
 
 export class ClientSearchFormState {
-	defaultClientSearch: DefaultClientSearch = new DefaultClientSearch;
-	clientSearch: ClientSearch = new ClientSearch;
+	defaultClientSearch: DefaultClientSearch = new DefaultClientSearch();
+	clientSearch: ClientSearch = new ClientSearch();
 }
 
 export class ClientSearch {
 	name: string = "";
-	age: bigint = 0n;
+	age: bigint = BigInt(0);
 }
 
 export class Client {
 	name: string = "";
-	age: bigint = 0n;
-	address: Address = new Address;
+	age: bigint = BigInt(0);
+	address: Address = new Address();
 }
 
 export class ClientWindowState {
-	client: Client = new Client;
+	client: Client = new Client();
 }
 
 export class ErrorMessageState {
@@ -90,16 +90,16 @@ export class Rolebis {
 }
 
 export class ClientList {
-	clients: Client[] = new Client[];
+	clients: Client[] = new {};
 }
 
 export class ClientListFormState {
-	clientList: ClientList = new ClientList;
+	clientList: ClientList = new ClientList();
 }
 
 export class Address {
 	street: string = "";
-	number: bigint = 0n;
+	number: bigint = BigInt(0);
 }
 
 export type StartAt02UnionEnum = 
