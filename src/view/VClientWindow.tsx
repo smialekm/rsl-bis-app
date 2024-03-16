@@ -12,7 +12,7 @@ export default function VClientWindow(
 	const emptyState: ClientWindowState = new ClientWindowState();
 	const [viewState, viewUpdate] = useReducer(updateClientWindow, emptyState);
 
-	pClientWindow.injectDataHandles(viewState, viewUpdate);
+	pClientWindow.injectStateHandle(viewState, viewUpdate);
 
 	if (!isActive) return;
 

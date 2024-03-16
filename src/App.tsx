@@ -70,15 +70,15 @@ export default function App() {
 		screen: ScreenId.START,
 	});
 
-	PMainMenu.injectGlobalUpdateView(globalUpdateView);
-	PClientSearchForm.injectGlobalUpdateView(globalUpdateView);
-	PClientWindow.injectGlobalUpdateView(globalUpdateView);
-	PErrorMessage.injectGlobalUpdateView(globalUpdateView);
-	PClientListForm.injectGlobalUpdateView(globalUpdateView);
+	pMainMenu.injectGlobalUpdateView(globalUpdateView);
+	pClientSearchForm.injectGlobalUpdateView(globalUpdateView);
+	pClientWindow.injectGlobalUpdateView(globalUpdateView);
+	pErrorMessage.injectGlobalUpdateView(globalUpdateView);
+	pClientListForm.injectGlobalUpdateView(globalUpdateView);
 
 	return (
 		<div className="App">
-			{ucStart.selectApplication()}
+			{start.selectApplication()}
 			{VMainMenu(state.screen === ScreenId.MAINMENU, pMainMenu, start, findClient, showClientList)}
 			{VClientSearchForm(state.screen === ScreenId.CLIENTSEARCHFORM, pClientSearchForm, findClient)}
 			{VClientWindow(state.screen === ScreenId.CLIENTWINDOW, pClientWindow, findClient)}

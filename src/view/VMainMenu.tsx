@@ -16,7 +16,7 @@ export default function VMainMenu(
 	const emptyState: MainMenuState = new MainMenuState();
 	const [viewState, viewUpdate] = useReducer(updateMainMenu, emptyState);
 
-	pMainMenu.injectDataHandles(viewState, viewUpdate);
+	pMainMenu.injectStateHandle(viewState, viewUpdate);
 
 	if (!isActive) return;
 

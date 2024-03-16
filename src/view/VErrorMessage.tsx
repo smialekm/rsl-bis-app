@@ -12,7 +12,7 @@ export default function VErrorMessage(
 	const emptyState: ErrorMessageState = new ErrorMessageState();
 	const [viewState, viewUpdate] = useReducer(updateErrorMessage, emptyState);
 
-	pErrorMessage.injectDataHandles(viewState, viewUpdate);
+	pErrorMessage.injectStateHandle(viewState, viewUpdate);
 
 	if (!isActive) return;
 

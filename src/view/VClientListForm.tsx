@@ -16,7 +16,7 @@ export default function VClientListForm(
 	const emptyState: ClientListFormState = new ClientListFormState();
 	const [viewState, viewUpdate] = useReducer(updateClientListForm, emptyState);
 
-	pClientListForm.injectDataHandles(viewState, viewUpdate);
+	pClientListForm.injectStateHandle(viewState, viewUpdate);
 
 	if (!isActive) return;
 

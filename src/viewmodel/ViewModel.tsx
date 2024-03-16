@@ -45,59 +45,59 @@ export enum InvokeResultEnum {
 	NOTOK = "NOTOK"
 }
 
-export type AppState = {
+export class AppState = {
 	screen: ScreenId;
 }
 
-export type MainMenuState = {
+export class MainMenuState = {
 }
 
-export type Role = {
+export class Role = {
 }
 
-export type ClientType = {
+export class ClientType = {
 }
 
-export type DefaultClientSearch = {
+export class DefaultClientSearch = {
 	name: string;
 	age: bigint;
 }
 
-export type ClientSearchFormState = {
+export class ClientSearchFormState = {
 	defaultClientSearch: DefaultClientSearch;
 	clientSearch: ClientSearch;
 }
 
-export type ClientSearch = {
+export class ClientSearch = {
 	name: string;
 	age: bigint;
 }
 
-export type Client = {
+export class Client = {
 	name: string;
 	age: bigint;
 	address: Address;
 }
 
-export type ClientWindowState = {
+export class ClientWindowState = {
 	client: Client;
 }
 
-export type ErrorMessageState = {
+export class ErrorMessageState = {
 }
 
-export type Rolebis = {
+export class Rolebis = {
 }
 
-export type ClientList = {
+export class ClientList = {
 	clients: Client[];
 }
 
-export type ClientListFormState = {
+export class ClientListFormState = {
 	clientList: ClientList;
 }
 
-export type Address = {
+export class Address = {
 	street: string;
 	number: bigint;
 }

@@ -12,7 +12,7 @@ export default function VClientSearchForm(
 	const emptyState: ClientSearchFormState = new ClientSearchFormState();
 	const [viewState, viewUpdate] = useReducer(updateClientSearchForm, emptyState);
 
-	pClientSearchForm.injectDataHandles(viewState, viewUpdate);
+	pClientSearchForm.injectStateHandle(viewState, viewUpdate);
 
 	if (!isActive) return;
 
