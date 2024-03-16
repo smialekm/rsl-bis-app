@@ -11,7 +11,7 @@ export class UCShowClientList{
 
 	returnTo?: Function;
 
-	rolebis?: Rolebis;
+	rolebis?: Rolebis = new Rolebis();
 
 	constructor(pClientListForm: PClientListForm, iClientList: IClientList, iRolebis: IRolebis) {
 		this.pClientListForm = pClientListForm;

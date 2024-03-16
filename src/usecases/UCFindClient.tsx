@@ -21,7 +21,7 @@ export class UCFindClient{
 
 	returnTo?: Function;
 
-	clientType?: ClientType;
+	clientType?: ClientType = new ClientType();
 
 	constructor(pClientSearchForm: PClientSearchForm, pClientWindow: PClientWindow, pErrorMessage: PErrorMessage, iRole: IRole, iDefaultClientSearch: IDefaultClientSearch, iClientSearch: IClientSearch, iClient: IClient, iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm) {
 		this.pClientSearchForm = pClientSearchForm;
