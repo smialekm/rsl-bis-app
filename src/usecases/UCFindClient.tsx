@@ -1,4 +1,4 @@
-import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, Short, Client } from "../../viewmodel/ViewModel";
+import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, Client } from "../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";
@@ -41,16 +41,16 @@ export class UCFindClient{
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != returnTo) this.returnTo = returnTo;
 		this.clientType = clientType;
-		DefaultClientSearch defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
+		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
 		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		ClientSearchEnum clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
-		if (ClientSearchEnum.Valid == clientSearchEnum) {
-			Client client = this.iClient.readClient(clientSearch, clientType);
+		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
+		if (ClientSearchEnum.VALID == clientSearchEnum) {
+			let client = this.iClient.readClient(clientSearch, clientType);
 			this.pClientWindow.showClientWindow(client);
-		} else if (ClientSearchEnum.Invalid == clientSearchEnum) {
+		} else if (ClientSearchEnum.INVALID == clientSearchEnum) {
 			this.pErrorMessage.showErrorMessage();
 		}
 	}
@@ -67,7 +67,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		Client client = this.iClient.readClient(clientSearch, clientType);
+		let client = this.iClient.readClient(clientSearch, clientType);
 		this.pClientWindow.showClientWindow(client);
 	}
 }

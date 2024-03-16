@@ -1,4 +1,4 @@
-import { RoleEnum, Role, ClientList, Rolebis, RolebisEnum, ShowClientListAtA1UnionEnum } from "../../viewmodel/ViewModel";
+import { RoleEnum, Role, ClientList, Rolebis, RolebisEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
 import { IClientList } from "../services/IClientList";
 import { IRolebis } from "../services/IRolebis";
@@ -26,7 +26,7 @@ export class UCShowClientList{
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
 		if (undefined != returnTo) this.returnTo = returnTo;
 		this.rolebis = rolebis;
-		ClientList clientList = this.iClientList.readClientList(rolebis);
+		let clientList = this.iClientList.readClientList(rolebis);
 		this.pClientListForm.showClientListForm(clientList);
 	}
 
@@ -36,14 +36,14 @@ export class UCShowClientList{
 	}
 
 	invokedAtA1(result: ShowClientListAtA1UnionEnum) {
-		RolebisEnum rolebisEnum = this.iRolebis.checkRolebis(rolebis);
-		if (result == "OK" && RolebisEnum.Client == rolebisEnum) {
-			Client client = this.iClient.readClient(clientSearch, clientType);
-			ClientList clientList = this.iClientList.readClientList(rolebis);
+		let rolebisEnum = this.iRolebis.checkRolebis(rolebis);
+		if (result == "OK" && RolebisEnum.CLIENT == rolebisEnum) {
+			let client = this.iClient.readClient(clientSearch, clientType);
+			let clientList = this.iClientList.readClientList(rolebis);
 			this.pClientListForm.showClientListForm(clientList);
 		} else if (result == "NOTOK") {
-			ClientList clientList = this.iClientList.readClientList(rolebis);
-			ClientList clientList = this.iClientList.readClientList(rolebis);
+			let clientList = this.iClientList.readClientList(rolebis);
+			let clientList = this.iClientList.readClientList(rolebis);
 			this.pClientListForm.showClientListForm(clientList);
 		}
 	}
