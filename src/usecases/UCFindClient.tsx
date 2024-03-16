@@ -35,7 +35,7 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return this.iRole.checkRole(role) == CASHIER;
+		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {

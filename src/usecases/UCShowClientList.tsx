@@ -1,11 +1,13 @@
 import { RoleEnum, Role, ClientList, Rolebis, ShowClientListResultEnum, RolebisEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
+import { IRole } from "../services/IRole";
 import { IClientList } from "../services/IClientList";
 import { IRolebis } from "../services/IRolebis";
 
 export class UCShowClientList{
 	pClientListForm: PClientListForm;
 
+	iRole: IRole;
 	iClientList: IClientList;
 	iRolebis: IRolebis;
 
@@ -13,14 +15,15 @@ export class UCShowClientList{
 
 	rolebis: Rolebis = new Rolebis();
 
-	constructor(pClientListForm: PClientListForm, iClientList: IClientList, iRolebis: IRolebis) {
+	constructor(pClientListForm: PClientListForm, iRole: IRole, iClientList: IClientList, iRolebis: IRolebis) {
 		this.pClientListForm = pClientListForm;
+		this.iRole = iRole;
 		this.iClientList = iClientList;
 		this.iRolebis = iRolebis;
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return this.iRole.checkRole(role) == CASHIER;
+		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
 	}
 
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
