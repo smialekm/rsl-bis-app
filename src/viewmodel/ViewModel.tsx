@@ -46,7 +46,7 @@ export enum InvokeResultEnum {
 }
 
 export class AppState {
-	screen: ScreenId = ScreenId.STARTnew ScreenId();
+	screen: ScreenId = ScreenId.START;
 }
 
 export class MainMenuState {
@@ -90,7 +90,7 @@ export class Rolebis {
 }
 
 export class ClientList {
-	clients: Client[] = new {};
+	clients: Client[] = new [];
 }
 
 export class ClientListFormState {
