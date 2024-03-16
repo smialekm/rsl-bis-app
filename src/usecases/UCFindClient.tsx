@@ -1,4 +1,4 @@
-import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, Client } from "../viewmodel/ViewModel";
+import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, FindClientResultEnum, FindClientResultEnum, Client } from "../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";
@@ -19,7 +19,7 @@ export class UCFindClient{
 	iClient: IClient;
 	iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm;
 
-	returnTo: Function = new Function();
+	returnTo?: Function;
 
 	clientType?: ClientType;
 
@@ -57,12 +57,12 @@ export class UCFindClient{
 
 	selectClose() {
 		this.iFiniteElementMethodAlgoritm.executeFiniteElementMethodAlgoritm(clientType);
-		if (null != returnTo)
+		if (undefined != this.returnTo)
 			this.returnTo(FindClientResultEnum.OK);
 	}
 
 	selectClose1() {
-		if (null != returnTo)
+		if (undefined != this.returnTo)
 			this.returnTo(FindClientResultEnum.NOTOK);
 	}
 

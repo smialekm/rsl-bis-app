@@ -1,4 +1,4 @@
-import { RoleEnum, Role, ClientList, Rolebis, RolebisEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
+import { RoleEnum, Role, ClientList, Rolebis, ShowClientListResultEnum, RolebisEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
 import { IClientList } from "../services/IClientList";
 import { IRolebis } from "../services/IRolebis";
@@ -9,7 +9,7 @@ export class UCShowClientList{
 	iClientList: IClientList;
 	iRolebis: IRolebis;
 
-	returnTo: Function = new Function();
+	returnTo?: Function;
 
 	rolebis?: Rolebis;
 
@@ -31,7 +31,7 @@ export class UCShowClientList{
 	}
 
 	selectClose() {
-		if (null != returnTo)
+		if (undefined != this.returnTo)
 			this.returnTo(ShowClientListResultEnum.OK);
 	}
 

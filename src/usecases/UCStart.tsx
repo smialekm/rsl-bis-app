@@ -4,7 +4,7 @@ import { PMainMenu } from "../view/presenters/PMainMenu";
 export class UCStart{
 	pMainMenu: PMainMenu;
 
-	returnTo: Function = new Function();
+	returnTo?: Function;
 
 	constructor(pMainMenu: PMainMenu) {
 		this.pMainMenu = pMainMenu;
