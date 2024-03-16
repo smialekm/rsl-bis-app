@@ -1,4 +1,4 @@
-import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, FindClientResultEnum, FindClientResultEnum, Client } from "../viewmodel/ViewModel";
+import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, FindClientResultEnum, Client } from "../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";
@@ -41,14 +41,14 @@ export class UCFindClient{
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
 		this.clientType = clientType;
-		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
+		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(this.clientType);
 		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
 		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
-			let client = this.iClient.readClient(clientSearch, clientType);
+			let client = this.iClient.readClient(clientSearch, this.clientType);
 			this.pClientWindow.showClientWindow(client);
 		} else if (ClientSearchEnum.INVALID == clientSearchEnum) {
 			this.pErrorMessage.showErrorMessage();
@@ -67,7 +67,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		let client = this.iClient.readClient(clientSearch, clientType);
+		let client = this.iClient.readClient(clientSearch, this.clientType);
 		this.pClientWindow.showClientWindow(client);
 	}
 }

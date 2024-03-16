@@ -1,4 +1,4 @@
-import { ClientSearchEnum, ClientSearch, ClientType } from "../../viewmodel/ViewModel";
+import { ClientSearchEnum, ClientSearch, ClientType } from "../viewmodel/ViewModel";
 
 export interface IClientSearch {
 	checkClientSearch(clientSearch: ClientSearch, clientType: ClientType): ClientSearchEnum;

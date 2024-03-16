@@ -1,4 +1,4 @@
-import { Short, ClientType } from "../../viewmodel/ViewModel";
+import { Short, ClientType } from "../viewmodel/ViewModel";
 
 export interface IFiniteElementMethodAlgoritm {
 	executeFiniteElementMethodAlgoritm(clientType: ClientType): Short;

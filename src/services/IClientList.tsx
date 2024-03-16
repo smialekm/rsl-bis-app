@@ -1,4 +1,4 @@
-import { ClientList, Rolebis } from "../../viewmodel/ViewModel";
+import { ClientList, Rolebis } from "../viewmodel/ViewModel";
 
 export interface IClientList {
 	readClientList(rolebis: Rolebis): ClientList;

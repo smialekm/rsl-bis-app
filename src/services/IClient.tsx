@@ -1,4 +1,4 @@
-import { Client, ClientSearch, ClientType } from "../../viewmodel/ViewModel";
+import { Client, ClientSearch, ClientType } from "../viewmodel/ViewModel";
 
 export interface IClient {
 	readClient(clientSearch: ClientSearch, clientType: ClientType): Client;

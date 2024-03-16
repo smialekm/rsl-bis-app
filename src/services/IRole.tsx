@@ -1,4 +1,4 @@
-import { RoleEnum, Role } from "../../viewmodel/ViewModel";
+import { RoleEnum, Role } from "../viewmodel/ViewModel";
 
 export interface IRole {
 	checkRole(role: Role): RoleEnum;

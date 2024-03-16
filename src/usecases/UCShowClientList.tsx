@@ -26,7 +26,7 @@ export class UCShowClientList{
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
 		this.rolebis = rolebis;
-		let clientList = this.iClientList.readClientList(rolebis);
+		let clientList = this.iClientList.readClientList(this.rolebis);
 		this.pClientListForm.showClientListForm(clientList);
 	}
 
@@ -38,12 +38,12 @@ export class UCShowClientList{
 	invokedAtA1(result: ShowClientListAtA1UnionEnum) {
 		let rolebisEnum = this.iRolebis.checkRolebis(rolebis);
 		if (result == "OK" && RolebisEnum.CLIENT == rolebisEnum) {
-			let client = this.iClient.readClient(clientSearch, clientType);
-			let clientList = this.iClientList.readClientList(rolebis);
+			let client = this.iClient.readClient(clientSearch, this.clientType);
+			let clientList = this.iClientList.readClientList(this.rolebis);
 			this.pClientListForm.showClientListForm(clientList);
 		} else if (result == "NOTOK") {
-			let clientList = this.iClientList.readClientList(rolebis);
-			let clientList = this.iClientList.readClientList(rolebis);
+			let clientList = this.iClientList.readClientList(this.rolebis);
+			let clientList = this.iClientList.readClientList(this.rolebis);
 			this.pClientListForm.showClientListForm(clientList);
 		}
 	}

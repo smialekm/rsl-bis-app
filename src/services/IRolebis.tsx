@@ -1,4 +1,4 @@
-import { RolebisEnum, Rolebis } from "../../viewmodel/ViewModel";
+import { RolebisEnum, Rolebis } from "../viewmodel/ViewModel";
 
 export interface IRolebis {
 	checkRolebis(rolebis: Rolebis): RolebisEnum;
