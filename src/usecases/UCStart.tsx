@@ -1,4 +1,4 @@
-import { result: StartAt02UnionEnum } from "../../viewmodel/ViewModel";
+import { StartAt02UnionEnum } from "../../viewmodel/ViewModel";
 import { PMainMenu } from "../view/presenters/PMainMenu";
 
 export class UCStart{

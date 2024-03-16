@@ -1,8 +1,7 @@
-import { role !enum, role: Role, default client search, clientType: ClientType, client search !enum, clientSearch: ClientSearch, short, client } from "../../viewmodel/ViewModel";
+import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, Short, Client } from "../../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";
-import { ClientType } from "../viewmodel/ViewModel";
 import { IRole } from "../services/IRole";
 import { IDefaultClientSearch } from "../services/IDefaultClientSearch";
 import { IClientSearch } from "../services/IClientSearch";

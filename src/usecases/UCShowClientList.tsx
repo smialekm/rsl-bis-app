@@ -1,6 +1,5 @@
-import { role !enum, role: Role, client list, rolebis: Rolebis, rolebis !enum, result: ShowClientListAtA1UnionEnum } from "../../viewmodel/ViewModel";
+import { RoleEnum, Role, ClientList, Rolebis, RolebisEnum, ShowClientListAtA1UnionEnum } from "../../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
-import { Rolebis } from "../viewmodel/ViewModel";
 import { IClientList } from "../services/IClientList";
 import { IRolebis } from "../services/IRolebis";
 
