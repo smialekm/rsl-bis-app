@@ -46,7 +46,7 @@ export class UCFindClient{
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
+		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
 			let client = this.iClient.readClient(clientSearch, this.clientType);
 			this.pClientWindow.showClientWindow(client);
@@ -56,7 +56,7 @@ export class UCFindClient{
 	}
 
 	selectClose() {
-		this.iFiniteElementMethodAlgoritm.executeFiniteElementMethodAlgoritm(clientType);
+		this.iFiniteElementMethodAlgoritm.executeFiniteElementMethodAlgoritm(this.clientType);
 		if (undefined != this.returnTo)
 			this.returnTo(FindClientResultEnum.OK);
 	}
