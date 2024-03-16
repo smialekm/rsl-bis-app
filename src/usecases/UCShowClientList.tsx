@@ -20,13 +20,13 @@ export class UCShowClientList{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return iRole.checkRole(role);
+		return this.iRole.checkRole(role);
 	}
 
-	selectShowClientList(rolebis: Rolebis, returnTo: Function = null) {
-		if (null != returnTo) this.returnTo = returnTo;
+	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
+		if (undefined != returnTo) this.returnTo = returnTo;
 		this.rolebis = rolebis;
-		ClientList clientList = iClientList.readClientList(rolebis);
+		ClientList clientList = this.iClientList.readClientList(rolebis);
 		pClientListForm.showClientListForm(clientList);
 	}
 
@@ -36,14 +36,14 @@ export class UCShowClientList{
 	}
 
 	invokedAtA1(result: ShowClientListAtA1UnionEnum) {
-		RolebisEnum rolebisEnum = iRolebis.checkRolebis(rolebis);
+		RolebisEnum rolebisEnum = this.iRolebis.checkRolebis(rolebis);
 		if (result == "OK" && RolebisEnum.Client == rolebisEnum) {
-			Client client = iClient.readClient(clientSearch, clientType);
-			ClientList clientList = iClientList.readClientList(rolebis);
+			Client client = this.iClient.readClient(clientSearch, clientType);
+			ClientList clientList = this.iClientList.readClientList(rolebis);
 			pClientListForm.showClientListForm(clientList);
 		} else if (result == "NOTOK") {
-			ClientList clientList = iClientList.readClientList(rolebis);
-			ClientList clientList = iClientList.readClientList(rolebis);
+			ClientList clientList = this.iClientList.readClientList(rolebis);
+			ClientList clientList = this.iClientList.readClientList(rolebis);
 			pClientListForm.showClientListForm(clientList);
 		}
 	}

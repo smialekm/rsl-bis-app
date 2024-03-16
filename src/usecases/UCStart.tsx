@@ -9,8 +9,8 @@ export class UCStart{
 		this.pMainMenu = pMainMenu;
 	}
 
-	selectApplication(returnTo: Function = null) {
-		if (null != returnTo) this.returnTo = returnTo;
+	selectApplication(returnTo?: Function) {
+		if (undefined != returnTo) this.returnTo = returnTo;
 		pMainMenu.showMainMenu();
 	}
 

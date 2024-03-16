@@ -5,8 +5,8 @@ export class UCAddClient{
 	constructor() {
 	}
 
-	selectAddClient(returnTo: Function = null) {
-		if (null != returnTo) this.returnTo = returnTo;
+	selectAddClient(returnTo?: Function) {
+		if (undefined != returnTo) this.returnTo = returnTo;
 		if (null != returnTo)
 			this.returnTo(AddClientResultEnum.OK);
 	}

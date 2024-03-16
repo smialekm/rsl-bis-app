@@ -35,20 +35,20 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return iRole.checkRole(role);
+		return this.iRole.checkRole(role);
 	}
 
-	selectFindClient(clientType: ClientType, returnTo: Function = null) {
-		if (null != returnTo) this.returnTo = returnTo;
+	selectFindClient(clientType: ClientType, returnTo?: Function) {
+		if (undefined != returnTo) this.returnTo = returnTo;
 		this.clientType = clientType;
-		DefaultClientSearch defaultClientSearch = iDefaultClientSearch.readDefaultClientSearch(clientType);
+		DefaultClientSearch defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(clientType);
 		pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		ClientSearchEnum clientSearchEnum = iClientSearch.checkClientSearch(clientSearch, clientType);
+		ClientSearchEnum clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, clientType);
 		if (ClientSearchEnum.Valid == clientSearchEnum) {
-			Client client = iClient.readClient(clientSearch, clientType);
+			Client client = this.iClient.readClient(clientSearch, clientType);
 			pClientWindow.showClientWindow(client);
 		} else if (ClientSearchEnum.Invalid == clientSearchEnum) {
 			pErrorMessage.showErrorMessage();
@@ -56,7 +56,7 @@ export class UCFindClient{
 	}
 
 	selectClose() {
-		iFiniteElementMethodAlgoritm.executeFiniteElementMethodAlgoritm(clientType);
+		this.iFiniteElementMethodAlgoritm.executeFiniteElementMethodAlgoritm(clientType);
 		if (null != returnTo)
 			this.returnTo(FindClientResultEnum.OK);
 	}
@@ -67,7 +67,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		Client client = iClient.readClient(clientSearch, clientType);
+		Client client = this.iClient.readClient(clientSearch, clientType);
 		pClientWindow.showClientWindow(client);
 	}
 }
