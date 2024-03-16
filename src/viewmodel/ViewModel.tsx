@@ -45,61 +45,61 @@ export enum InvokeResultEnum {
 	NOTOK = "NOTOK"
 }
 
-export class AppState = {
-	screen: ScreenId;
+export class AppState {
+	screen: ScreenId = new ScreenId;
 }
 
-export class MainMenuState = {
+export class MainMenuState {
 }
 
-export class Role = {
+export class Role {
 }
 
-export class ClientType = {
+export class ClientType {
 }
 
-export class DefaultClientSearch = {
-	name: string;
-	age: bigint;
+export class DefaultClientSearch {
+	name: string = "";
+	age: bigint = 0n;
 }
 
-export class ClientSearchFormState = {
-	defaultClientSearch: DefaultClientSearch;
-	clientSearch: ClientSearch;
+export class ClientSearchFormState {
+	defaultClientSearch: DefaultClientSearch = new DefaultClientSearch;
+	clientSearch: ClientSearch = new ClientSearch;
 }
 
-export class ClientSearch = {
-	name: string;
-	age: bigint;
+export class ClientSearch {
+	name: string = "";
+	age: bigint = 0n;
 }
 
-export class Client = {
-	name: string;
-	age: bigint;
-	address: Address;
+export class Client {
+	name: string = "";
+	age: bigint = 0n;
+	address: Address = new Address;
 }
 
-export class ClientWindowState = {
-	client: Client;
+export class ClientWindowState {
+	client: Client = new Client;
 }
 
-export class ErrorMessageState = {
+export class ErrorMessageState {
 }
 
-export class Rolebis = {
+export class Rolebis {
 }
 
-export class ClientList = {
-	clients: Client[];
+export class ClientList {
+	clients: Client[] = new Client[];
 }
 
-export class ClientListFormState = {
-	clientList: ClientList;
+export class ClientListFormState {
+	clientList: ClientList = new ClientList;
 }
 
-export class Address = {
-	street: string;
-	number: bigint;
+export class Address {
+	street: string = "";
+	number: bigint = 0n;
 }
 
 export type StartAt02UnionEnum = 
