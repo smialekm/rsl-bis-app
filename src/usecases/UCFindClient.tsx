@@ -22,6 +22,7 @@ export class UCFindClient{
 	returnTo?: Function;
 
 	clientType: ClientType = new ClientType();
+	clientSearch: ClientSearch = new ClientSearch();
 
 	constructor(pClientSearchForm: PClientSearchForm, pClientWindow: PClientWindow, pErrorMessage: PErrorMessage, iRole: IRole, iDefaultClientSearch: IDefaultClientSearch, iClientSearch: IClientSearch, iClient: IClient, iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm) {
 		this.pClientSearchForm = pClientSearchForm;
@@ -35,21 +36,23 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
+		this.this.role = this.role;
+		return this.iRole.checkRole(this.role) == RoleEnum.CASHIER;
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.clientType = clientType;
+		this.this.clientType = this.clientType;
 		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(this.clientType);
-		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
+		this.pClientSearchForm.showClientSearchForm(this.defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
+		this.this.clientSearch = this.clientSearch;
+		let clientSearchEnum = this.iClientSearch.checkClientSearch(this.clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
-			let client = this.iClient.readClient(clientSearch, this.clientType);
-			this.pClientWindow.showClientWindow(client);
+			let client = this.iClient.readClient(this.clientSearch, this.clientType);
+			this.pClientWindow.showClientWindow(this.client);
 		} else if (ClientSearchEnum.INVALID == clientSearchEnum) {
 			this.pErrorMessage.showErrorMessage();
 		}
@@ -67,7 +70,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		let client = this.iClient.readClient(clientSearch, this.clientType);
-		this.pClientWindow.showClientWindow(client);
+		let client = this.iClient.readClient(this.clientSearch, this.clientType);
+		this.pClientWindow.showClientWindow(this.client);
 	}
 }

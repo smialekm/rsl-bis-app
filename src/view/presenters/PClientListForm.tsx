@@ -17,7 +17,7 @@ export class PClientListForm extends PresentationDispatcher {
 	}
 
 	showClientListForm(clientList: ClientList){
-		this.state.clientList = clientList;
+		this.state.this.clientList = this.clientList;
 		this.gUpdateView?.(ScreenId.CLIENTLISTFORM);
 	}
 }

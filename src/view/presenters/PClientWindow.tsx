@@ -17,7 +17,7 @@ export class PClientWindow extends PresentationDispatcher {
 	}
 
 	showClientWindow(client: Client){
-		this.state.client = client;
+		this.state.this.client = this.client;
 		this.gUpdateView?.(ScreenId.CLIENTWINDOW);
 	}
 }

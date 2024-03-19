@@ -17,7 +17,7 @@ export class PClientSearchForm extends PresentationDispatcher {
 	}
 
 	showClientSearchForm(defaultClientSearch: DefaultClientSearch){
-		this.state.defaultClientSearch = defaultClientSearch;
+		this.state.this.defaultClientSearch = this.defaultClientSearch;
 		this.gUpdateView?.(ScreenId.CLIENTSEARCHFORM);
 	}
 }
