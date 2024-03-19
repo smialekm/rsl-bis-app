@@ -32,7 +32,7 @@ export class UCShowClientList{
 
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.rolebis = rolebis;
+		this.this.rolebis = this.rolebis;
 		let clientList = this.iClientList.readClientList(this.rolebis);
 		this.pClientListForm.showClientListForm(clientList);
 	}

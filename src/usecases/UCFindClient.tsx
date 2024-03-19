@@ -42,13 +42,13 @@ export class UCFindClient{
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.clientType = clientType;
+		this.this.clientType = this.clientType;
 		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(this.clientType);
 		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		this.clientSearch = clientSearch;
+		this.this.clientSearch = this.clientSearch;
 		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
 			let client = this.iClient.readClient(this.clientSearch, this.clientType);
