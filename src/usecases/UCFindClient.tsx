@@ -51,7 +51,7 @@ export class UCFindClient{
 		this.clientSearch = clientSearch;
 		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
-			let client = this.iClient.readClient(clientSearch, this.clientType);
+			let client = this.iClient.readClient(this.clientSearch, this.clientType);
 			this.pClientWindow.showClientWindow(client);
 		} else if (ClientSearchEnum.INVALID == clientSearchEnum) {
 			this.pErrorMessage.showErrorMessage();
@@ -70,7 +70,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		let client = this.iClient.readClient(clientSearch, this.clientType);
+		let client = this.iClient.readClient(this.clientSearch, this.clientType);
 		this.pClientWindow.showClientWindow(client);
 	}
 }

@@ -46,7 +46,7 @@ export class UCShowClientList{
 		this.result = result;
 		let rolebisEnum = this.iRolebis.checkRolebis(rolebis);
 		if (result == "OK" && RolebisEnum.CLIENT == rolebisEnum) {
-			let client = this.iClient.readClient(clientSearch, this.clientType);
+			let client = this.iClient.readClient(this.clientSearch, this.clientType);
 			let clientList = this.iClientList.readClientList(this.rolebis);
 			this.pClientListForm.showClientListForm(clientList);
 		} else if (result == "NOTOK") {
