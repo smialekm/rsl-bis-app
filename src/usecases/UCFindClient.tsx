@@ -36,19 +36,19 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		this.role = role;
+	role = role;
 		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.this.clientType = this.clientType;
+	this.clientType = clientType;
 		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(this.clientType);
 		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		this.this.clientSearch = this.clientSearch;
+	this.clientSearch = clientSearch;
 		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
 			let client = this.iClient.readClient(this.clientSearch, this.clientType);

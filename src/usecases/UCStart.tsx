@@ -16,7 +16,6 @@ export class UCStart{
 	}
 
 	invokedAt02(result: StartAt02UnionEnum) {
-		this.result = result;
 		this.pMainMenu.showMainMenu();
 	}
 }
