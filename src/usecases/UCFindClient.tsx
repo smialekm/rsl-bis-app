@@ -36,23 +36,23 @@ export class UCFindClient{
 	}
 
 	preconditionCheck(role: Role): boolean {
-		this.this.role = this.role;
-		return this.iRole.checkRole(this.role) == RoleEnum.CASHIER;
+		this.role = role;
+		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
 	}
 
 	selectFindClient(clientType: ClientType, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.this.clientType = this.clientType;
+		this.clientType = clientType;
 		let defaultClientSearch = this.iDefaultClientSearch.readDefaultClientSearch(this.clientType);
-		this.pClientSearchForm.showClientSearchForm(this.defaultClientSearch);
+		this.pClientSearchForm.showClientSearchForm(defaultClientSearch);
 	}
 
 	selectSearch(clientSearch: ClientSearch) {
-		this.this.clientSearch = this.clientSearch;
-		let clientSearchEnum = this.iClientSearch.checkClientSearch(this.clientSearch, this.clientType);
+		this.clientSearch = clientSearch;
+		let clientSearchEnum = this.iClientSearch.checkClientSearch(clientSearch, this.clientType);
 		if (ClientSearchEnum.VALID == clientSearchEnum) {
-			let client = this.iClient.readClient(this.clientSearch, this.clientType);
-			this.pClientWindow.showClientWindow(this.client);
+			let client = this.iClient.readClient(clientSearch, this.clientType);
+			this.pClientWindow.showClientWindow(client);
 		} else if (ClientSearchEnum.INVALID == clientSearchEnum) {
 			this.pErrorMessage.showErrorMessage();
 		}
@@ -70,7 +70,7 @@ export class UCFindClient{
 	}
 
 	selectRepeat() {
-		let client = this.iClient.readClient(this.clientSearch, this.clientType);
-		this.pClientWindow.showClientWindow(this.client);
+		let client = this.iClient.readClient(clientSearch, this.clientType);
+		this.pClientWindow.showClientWindow(client);
 	}
 }
