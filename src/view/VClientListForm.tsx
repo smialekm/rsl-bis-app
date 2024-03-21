@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import { ClientListFormState } from "../viewmodel/ViewModel";
 import { CClientListForm } from "./controllers/CClientListForm";
@@ -14,9 +15,9 @@ export default function VClientListForm(
 	addClient: UCAddClient
 ) {
 	const emptyState: ClientListFormState = new ClientListFormState();
-	const [viewState, viewUpdate] = useReducer(updateClientListForm, emptyState);
+	const [viewState, updateView] = useReducer(updateClientListForm, emptyState);
 
-	pClientListForm.injectStateHandle(viewState, viewUpdate);
+	pClientListForm.injectStateHandle(viewState, updateView);
 
 	if (!isActive) return;
 
@@ -37,7 +38,7 @@ export default function VClientListForm(
 						 viewState.clientList.clients.map((value,index) => (
 							<tr key={index}>
 								<td>{value.name}</td>
-								<td>{value.age}</td>
+								<td>{value.age.toString()}</td>
 							</tr>
 						))}
 					</tbody>
@@ -48,12 +49,12 @@ export default function VClientListForm(
 			>
 				Close
 			</button>
-			<link
-				disabled={!invokeCheckFindClient}
+			<button
+				disabled={!Boolean(invokeCheckFindClient())}
 				onClick={selectFindClient}
 			>
 				Find Client
-			</link>
+			</button>
 			<button
 				onClick={selectAddClient}
 			>

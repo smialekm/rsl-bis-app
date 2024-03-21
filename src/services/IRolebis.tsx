@@ -7,7 +7,7 @@ export interface IRolebis {
 export class RolebisProxy implements IRolebis{
 
 	checkRolebis(rolebis: Rolebis): RolebisEnum {
-
+		return RolebisEnum[0];
 	}
 }
 

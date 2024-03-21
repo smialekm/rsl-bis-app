@@ -7,7 +7,7 @@ export interface IClient {
 export class ClientProxy implements IClient{
 
 	readClient(clientSearch: ClientSearch, clientType: ClientType): Client {
-
+		return new Client();
 	}
 }
 

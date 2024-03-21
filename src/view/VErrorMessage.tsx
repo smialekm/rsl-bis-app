@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import { ErrorMessageState } from "../viewmodel/ViewModel";
 import { CErrorMessage } from "./controllers/CErrorMessage";
@@ -10,9 +11,9 @@ export default function VErrorMessage(
 	findClient: UCFindClient
 ) {
 	const emptyState: ErrorMessageState = new ErrorMessageState();
-	const [viewState, viewUpdate] = useReducer(updateErrorMessage, emptyState);
+	const [viewState, updateView] = useReducer(updateErrorMessage, emptyState);
 
-	pErrorMessage.injectStateHandle(viewState, viewUpdate);
+	pErrorMessage.injectStateHandle(viewState, updateView);
 
 	if (!isActive) return;
 

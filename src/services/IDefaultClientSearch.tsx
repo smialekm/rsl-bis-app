@@ -7,7 +7,7 @@ export interface IDefaultClientSearch {
 export class DefaultClientSearchProxy implements IDefaultClientSearch{
 
 	readDefaultClientSearch(clientType: ClientType): DefaultClientSearch {
-
+		return new DefaultClientSearch();
 	}
 }
 

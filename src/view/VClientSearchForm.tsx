@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import { ClientSearchFormState } from "../viewmodel/ViewModel";
 import { CClientSearchForm } from "./controllers/CClientSearchForm";
@@ -10,9 +11,9 @@ export default function VClientSearchForm(
 	findClient: UCFindClient
 ) {
 	const emptyState: ClientSearchFormState = new ClientSearchFormState();
-	const [viewState, viewUpdate] = useReducer(updateClientSearchForm, emptyState);
+	const [viewState, updateView] = useReducer(updateClientSearchForm, emptyState);
 
-	pClientSearchForm.injectStateHandle(viewState, viewUpdate);
+	pClientSearchForm.injectStateHandle(viewState, updateView);
 
 	if (!isActive) return;
 
@@ -28,16 +29,16 @@ export default function VClientSearchForm(
 					onChange={(e) => {
 						viewState.defaultClientSearch.name = e.target.value;
 						updateView("defaultClientSearch_name")
-					}
+					}}
 				/>
 				<label>age</label>
 				<input
 					type="text"
-					value={viewState.defaultClientSearch.age}
+					value={viewState.defaultClientSearch.age.toString()}
 					onChange={(e) => {
-						viewState.defaultClientSearch.age = e.target.value;
+						viewState.defaultClientSearch.age = BigInt(e.target.value);
 						updateView("defaultClientSearch_age")
-					}
+					}}
 				/>
 
 			<h3>client search</h3>
@@ -48,23 +49,23 @@ export default function VClientSearchForm(
 					onChange={(e) => {
 						viewState.clientSearch.name = e.target.value;
 						updateView("clientSearch_name")
-					}
+					}}
 				/>
 				<label>age</label>
 				<input
 					type="text"
-					value={viewState.clientSearch.age}
+					value={viewState.clientSearch.age.toString()}
 					onChange={(e) => {
-						viewState.clientSearch.age = e.target.value;
+						viewState.clientSearch.age = BigInt(e.target.value);
 						updateView("clientSearch_age")
-					}
+					}}
 				/>
 
-			<link
+			<button
 				onClick={selectSearch}
 			>
 				Search
-			</link>
+			</button>
 		</div>
 	);
 }

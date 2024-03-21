@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import { ClientWindowState } from "../viewmodel/ViewModel";
 import { CClientWindow } from "./controllers/CClientWindow";
@@ -10,9 +11,9 @@ export default function VClientWindow(
 	findClient: UCFindClient
 ) {
 	const emptyState: ClientWindowState = new ClientWindowState();
-	const [viewState, viewUpdate] = useReducer(updateClientWindow, emptyState);
+	const [viewState, updateView] = useReducer(updateClientWindow, emptyState);
 
-	pClientWindow.injectStateHandle(viewState, viewUpdate);
+	pClientWindow.injectStateHandle(viewState, updateView);
 
 	if (!isActive) return;
 
@@ -28,16 +29,16 @@ export default function VClientWindow(
 					onChange={(e) => {
 						viewState.client.name = e.target.value;
 						updateView("client_name")
-					}
+					}}
 				/>
 				<label>age</label>
 				<input
 					type="text"
-					value={viewState.client.age}
+					value={viewState.client.age.toString()}
 					onChange={(e) => {
-						viewState.client.age = e.target.value;
+						viewState.client.age = BigInt(e.target.value);
 						updateView("client_age")
-					}
+					}}
 				/>
 				<h4>address</h4>
 					<label>street</label>
@@ -47,23 +48,23 @@ export default function VClientWindow(
 						onChange={(e) => {
 							viewState.client.address.street = e.target.value;
 							updateView("client_address_street")
-						}
+						}}
 					/>
 					<label>number</label>
 					<input
 						type="text"
-						value={viewState.client.address.number}
+						value={viewState.client.address.number.toString()}
 						onChange={(e) => {
-							viewState.client.address.number = e.target.value;
+							viewState.client.address.number = BigInt(e.target.value);
 							updateView("client_address_number")
-						}
+						}}
 					/>
 
-			<link
+			<button
 				onClick={selectClose}
 			>
 				Close
-			</link>
+			</button>
 		</div>
 	);
 }

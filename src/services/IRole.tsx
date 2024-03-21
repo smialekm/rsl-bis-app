@@ -7,7 +7,7 @@ export interface IRole {
 export class RoleProxy implements IRole{
 
 	checkRole(role: Role): RoleEnum {
-
+		return RoleEnum[0];
 	}
 }
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import { AppState, ScreenId } from "./viewmodel/ViewModel";
 import VMainMenu from "./view/VMainMenu";

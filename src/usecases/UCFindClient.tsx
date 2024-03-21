@@ -1,4 +1,4 @@
-import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, FindClientResultEnum, Client } from "../viewmodel/ViewModel";
+import { RoleEnum, Role, DefaultClientSearch, ClientType, ClientSearchEnum, ClientSearch, Bigint, FindClientResultEnum, Client } from "../viewmodel/ViewModel";
 import { PClientSearchForm } from "../view/presenters/PClientSearchForm";
 import { PClientWindow } from "../view/presenters/PClientWindow";
 import { PErrorMessage } from "../view/presenters/PErrorMessage";

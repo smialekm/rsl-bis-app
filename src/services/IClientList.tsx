@@ -7,7 +7,7 @@ export interface IClientList {
 export class ClientListProxy implements IClientList{
 
 	readClientList(rolebis: Rolebis): ClientList {
-
+		return new ClientList();
 	}
 }
 

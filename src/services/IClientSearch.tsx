@@ -7,7 +7,7 @@ export interface IClientSearch {
 export class ClientSearchProxy implements IClientSearch{
 
 	checkClientSearch(clientSearch: ClientSearch, clientType: ClientType): ClientSearchEnum {
-
+		return ClientSearchEnum[0];
 	}
 }
 
