@@ -26,13 +26,13 @@ export class UCShowClientList{
 	}
 
 	preconditionCheck(role: Role): boolean {
-	role = role;
+		role = role;
 		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
 	}
 
 	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-	this.rolebis = rolebis;
+		this.rolebis = rolebis;
 		let clientList = this.iClientList.readClientList(this.rolebis);
 		this.pClientListForm.showClientListForm(clientList);
 	}
@@ -43,7 +43,7 @@ export class UCShowClientList{
 	}
 
 	invokedAtA1(result: ShowClientListAtA1UnionEnum) {
-		let rolebisEnum = this.iRolebis.checkRolebis(rolebis);
+		let rolebisEnum = this.iRolebis.checkRolebis(this.rolebis);
 		if (result == "OK" && RolebisEnum.CLIENT == rolebisEnum) {
 			let client = this.iClient.readClient(this.clientSearch, this.clientType);
 			let clientList = this.iClientList.readClientList(this.rolebis);
