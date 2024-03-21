@@ -1,31 +1,22 @@
-import { ClientListFormState, ClientType, Role } from "../../viewmodel/ViewModel";
+import { ClientListFormState, ClientType } from "../../viewmodel/ViewModel";
 import { UCShowClientList } from "../../usecases/UCShowClientList";
-import { UCFindClient } from "../../usecases/UCFindClient";
-import { UCAddClient } from "../../usecases/UCAddClient";
 
 export function CClientListForm(
 	state: ClientListFormState,
-	showClientList: UCShowClientList,
-	findClient: UCFindClient,
-	addClient: UCAddClient
+	showClientList: UCShowClientList
 ) {
 	function selectClose() {
-		showClientList.selectClose();
+		let clientType: ClientType = Object.create(state.clientType);
+		showClientList.selectClose(clientType);
 	}
 
 	function selectFindClient() {
-		let clientType: ClientType = Object.create(state.clientType);
-		findClient.selectFindClient(clientType, showClientList.invokedAtA1);
-	}
-
-	function invokeCheckFindClient(): boolean {
-		let role: Role = Object.create(state.role);
-		return findClient.preconditionCheck(role);
+		showClientList.selectFindClient(showClientList.invokedAtA1);
 	}
 
 	function selectAddClient() {
-		addClient.selectAddClient(showClientList.invokedAtA1);
+		showClientList.selectAddClient(showClientList.invokedAtA1);
 	}
 
-	return [selectClose, selectFindClient, invokeCheckFindClient, selectAddClient];
+	return [selectClose, selectFindClient, selectAddClient];
 }

@@ -1,12 +1,12 @@
-import { ClientList, Rolebis } from "../viewmodel/ViewModel";
+import { ClientList } from "../viewmodel/ViewModel";
 
 export interface IClientList {
-	readClientList(rolebis: Rolebis): ClientList;
+	readClientList(): ClientList;
 }
 
 export class ClientListProxy implements IClientList{
 
-	readClientList(rolebis: Rolebis): ClientList {
+	readClientList(): ClientList {
 		return new ClientList();
 	}
 }

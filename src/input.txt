@@ -1,11 +1,11 @@
 Use case Start Main scenario
 00: User <select> application
 01: System <show> main menu
-02: User <invoke> Show client list, Find client
+02: User <enter> role
+03: User <invoke> Show client list, Find client
 -> rejoin 01
 
 Use case Find client Main scenario
-{role ? -cashier; client type}
 00: Cashier <select> find client
 01: System <read> default client search
 02: System <show> client search form
@@ -38,18 +38,19 @@ Use case Add client Main scenario
 -> end ! OK
 
 Use case Show client list Main scenario
-{role ? cashier; rolebis}
 00: Cashier <select> show client list
 01: System <read> client list
-02: System <show> client list form
-03: Cashier <select> close
+02: System <read> client type
+03: System <show> client list form
+04: Cachier <enter> client type
+05: Cashier <select> close
 -> end ! OK
 
 Scenario
-02: -"-
+04: -"-
 A1: Cachier <invoke> Find client, Add client
-A2: System <check> rolebis
-[ended ? OK; rolebis ? client]
+A2: System <check> client type
+[ended ? OK]
 A3: System <read> client
 -> rejoin 01
 
@@ -90,4 +91,4 @@ Data client list {
 	clients: [client]
 }
 
-View *form* client list form {List of clients}
+View *form* client list form {List of clients}, main menu {Main menu)

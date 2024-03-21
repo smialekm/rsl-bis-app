@@ -3,16 +3,12 @@ import { useReducer } from "react";
 import { MainMenuState } from "../viewmodel/ViewModel";
 import { CMainMenu } from "./controllers/CMainMenu";
 import { UCStart } from "../usecases/UCStart";
-import { UCFindClient } from "../usecases/UCFindClient";
-import { UCShowClientList } from "../usecases/UCShowClientList";
 import { PMainMenu, updateMainMenu } from "./presenters/PMainMenu";
 
 export default function VMainMenu(
 	isActive: boolean,
 	pMainMenu: PMainMenu,
-	start: UCStart,
-	findClient: UCFindClient,
-	showClientList: UCShowClientList
+	start: UCStart
 ) {
 	const emptyState: MainMenuState = new MainMenuState();
 	const [viewState, updateView] = useReducer(updateMainMenu, emptyState);
@@ -21,17 +17,18 @@ export default function VMainMenu(
 
 	if (!isActive) return;
 
-	const [selectFindClient, invokeCheckFindClient, selectShowClientList, invokeCheckShowClientList] = CMainMenu(viewState, start,findClient,showClientList);
+	const [selectFindClient, selectShowClientList] = CMainMenu(viewState, start);
 	return (
 		<div className="MainMenu">
+			<h2>Main menu</h2>
+			<h3>role</h3>
+
 			<button
-				disabled={!Boolean(invokeCheckFindClient())}
 				onClick={selectFindClient}
 			>
 				Find Client
 			</button>
 			<button
-				disabled={!Boolean(invokeCheckShowClientList())}
 				onClick={selectShowClientList}
 			>
 				Show Client List

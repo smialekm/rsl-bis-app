@@ -15,13 +15,12 @@ import { UCStart } from "./usecases/UCStart";
 import { UCFindClient } from "./usecases/UCFindClient";
 import { UCAddClient } from "./usecases/UCAddClient";
 import { UCShowClientList } from "./usecases/UCShowClientList";
-import { IRole, RoleProxy } from "./services/IRole";
 import { IDefaultClientSearch, DefaultClientSearchProxy } from "./services/IDefaultClientSearch";
 import { IClientSearch, ClientSearchProxy } from "./services/IClientSearch";
 import { IClient, ClientProxy } from "./services/IClient";
 import { IFiniteElementMethodAlgoritm, FiniteElementMethodAlgoritmProxy } from "./services/IFiniteElementMethodAlgoritm";
 import { IClientList, ClientListProxy } from "./services/IClientList";
-import { IRolebis, RolebisProxy } from "./services/IRolebis";
+import { IClientType, ClientTypeProxy } from "./services/IClientType";
 
 const pMainMenu: PMainMenu = new PMainMenu();
 const pClientSearchForm: PClientSearchForm = new PClientSearchForm();
@@ -29,18 +28,21 @@ const pClientWindow: PClientWindow = new PClientWindow();
 const pErrorMessage: PErrorMessage = new PErrorMessage();
 const pClientListForm: PClientListForm = new PClientListForm();
 
-const iRole: IRole = new RoleProxy();
 const iDefaultClientSearch: IDefaultClientSearch = new DefaultClientSearchProxy();
 const iClientSearch: IClientSearch = new ClientSearchProxy();
 const iClient: IClient = new ClientProxy();
 const iFiniteElementMethodAlgoritm: IFiniteElementMethodAlgoritm = new FiniteElementMethodAlgoritmProxy();
 const iClientList: IClientList = new ClientListProxy();
-const iRolebis: IRolebis = new RolebisProxy();
+const iClientType: IClientType = new ClientTypeProxy();
 
 const start: UCStart = new UCStart(pMainMenu);
-const findClient: UCFindClient = new UCFindClient(pClientSearchForm, pClientWindow, pErrorMessage, iRole, iDefaultClientSearch, iClientSearch, iClient, iFiniteElementMethodAlgoritm);
+const findClient: UCFindClient = new UCFindClient(pClientSearchForm, pClientWindow, pErrorMessage, iDefaultClientSearch, iClientSearch, iClient, iFiniteElementMethodAlgoritm);
 const addClient: UCAddClient = new UCAddClient();
-const showClientList: UCShowClientList = new UCShowClientList(pClientListForm, iRole, iClientList, iRolebis, iClient);
+const showClientList: UCShowClientList = new UCShowClientList(pClientListForm, iClientList, iClientType, iClient);
+start.findClient = findClient;
+start.showClientList = showClientList;
+showClientList.findClient = findClient;
+showClientList.addClient = addClient;
 
 function switchView(state: AppState, action: ScreenId) {
 	let newState = { ...state };
@@ -77,14 +79,16 @@ export default function App() {
 	pErrorMessage.injectGlobalUpdateView(globalUpdateView);
 	pClientListForm.injectGlobalUpdateView(globalUpdateView);
 
+
+	if (state.screen === ScreenId.START) start.selectApplication();
+
 	return (
 		<div className="App">
-			{start.selectApplication()}
-			{VMainMenu(state.screen === ScreenId.MAINMENU, pMainMenu, start, findClient, showClientList)}
+			{VMainMenu(state.screen === ScreenId.MAINMENU, pMainMenu, start)}
 			{VClientSearchForm(state.screen === ScreenId.CLIENTSEARCHFORM, pClientSearchForm, findClient)}
 			{VClientWindow(state.screen === ScreenId.CLIENTWINDOW, pClientWindow, findClient)}
 			{VErrorMessage(state.screen === ScreenId.ERRORMESSAGE, pErrorMessage, findClient)}
-			{VClientListForm(state.screen === ScreenId.CLIENTLISTFORM, pClientListForm, showClientList, findClient, addClient)}
+			{VClientListForm(state.screen === ScreenId.CLIENTLISTFORM, pClientListForm, showClientList)}
 		</div>
 	);
 }

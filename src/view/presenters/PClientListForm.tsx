@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { PresentationDispatcher } from "./PresentationDispatcher";
-import { ClientListFormState, ScreenId, ClientList } from "../../viewmodel/ViewModel";
+import { ClientListFormState, ScreenId, ClientList, ClientType } from "../../viewmodel/ViewModel";
 
 export function updateClientListForm(state: ClientListFormState, action: string) {
 	let newState = { ...state };
@@ -16,8 +16,9 @@ export class PClientListForm extends PresentationDispatcher {
 		this.updateView = updateView;
 	}
 
-	showClientListForm(clientList: ClientList){
+	showClientListForm(clientList: ClientList, clientType: ClientType){
 		this.state.clientList = clientList;
+		this.state.clientType = clientType;
 		this.gUpdateView?.(ScreenId.CLIENTLISTFORM);
 	}
 }

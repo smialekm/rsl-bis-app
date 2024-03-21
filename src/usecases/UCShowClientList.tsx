@@ -1,57 +1,67 @@
-import { RoleEnum, Role, ClientList, Rolebis, ShowClientListResultEnum, RolebisEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
+import { ClientList, ClientType, ShowClientListResultEnum, ClientTypeEnum, ShowClientListAtA1UnionEnum } from "../viewmodel/ViewModel";
 import { PClientListForm } from "../view/presenters/PClientListForm";
-import { IRole } from "../services/IRole";
 import { IClientList } from "../services/IClientList";
-import { IRolebis } from "../services/IRolebis";
+import { IClientType } from "../services/IClientType";
 import { IClient } from "../services/IClient";
+import { UCFindClient } from "./UCFindClient";
+import { UCAddClient } from "./UCAddClient";
 
 export class UCShowClientList{
 	pClientListForm: PClientListForm;
 
-	iRole: IRole;
 	iClientList: IClientList;
-	iRolebis: IRolebis;
+	iClientType: IClientType;
 	iClient: IClient;
+
+	findClient: UCFindClient;
+	addClient: UCAddClient;
 
 	returnTo?: Function;
 
-	rolebis: Rolebis = new Rolebis();
+	clientType: ClientType = new ClientType();
 
-	constructor(pClientListForm: PClientListForm, iRole: IRole, iClientList: IClientList, iRolebis: IRolebis, iClient: IClient) {
+	constructor(pClientListForm: PClientListForm, iClientList: IClientList, iClientType: IClientType, iClient: IClient) {
 		this.pClientListForm = pClientListForm;
-		this.iRole = iRole;
 		this.iClientList = iClientList;
-		this.iRolebis = iRolebis;
+		this.iClientType = iClientType;
 		this.iClient = iClient;
 	}
 
-	preconditionCheck(role: Role): boolean {
-		role = role;
-		return this.iRole.checkRole(role) == RoleEnum.CASHIER;
-	}
-
-	selectShowClientList(rolebis: Rolebis, returnTo?: Function) {
+	selectShowClientList(returnTo?: Function) {
 		if (undefined != this.returnTo) this.returnTo = returnTo;
-		this.rolebis = rolebis;
-		let clientList = this.iClientList.readClientList(this.rolebis);
-		this.pClientListForm.showClientListForm(clientList);
+		let clientList = this.iClientList.readClientList();
+		let clientType = this.iClientType.readClientType();
+		this.pClientListForm.showClientListForm(clientList, clientType);
 	}
 
-	selectClose() {
+	selectClose(clientType: ClientType) {
+		this.clientType = clientType;
 		if (undefined != this.returnTo)
 			this.returnTo(ShowClientListResultEnum.OK);
 	}
 
 	invokedAtA1(result: ShowClientListAtA1UnionEnum) {
-		let rolebisEnum = this.iRolebis.checkRolebis(this.rolebis);
-		if (result == "OK" && RolebisEnum.CLIENT == rolebisEnum) {
-			let client = this.iClient.readClient(this.clientSearch, this.clientType);
-			let clientList = this.iClientList.readClientList(this.rolebis);
-			this.pClientListForm.showClientListForm(clientList);
+		let clientTypeEnum = this.iClientType.checkClientType(this.clientType);
+		if (result == "OK") {
+			let client = this.iClient.readClient(this.clientSearch);
+			let clientList = this.iClientList.readClientList();
+			let clientType = this.iClientType.readClientType();
+			this.pClientListForm.showClientListForm(clientList, clientType);
 		} else if (result == "NOTOK") {
-			let clientList = this.iClientList.readClientList(this.rolebis);
-			let clientList = this.iClientList.readClientList(this.rolebis);
-			this.pClientListForm.showClientListForm(clientList);
+			let clientList = this.iClientList.readClientList();
+			let clientList = this.iClientList.readClientList();
+			let clientType = this.iClientType.readClientType();
+			this.pClientListForm.showClientListForm(clientList, clientType);
 		}
+	}
+
+	selectFindClient(returnTo?: Function) {
+		if (undefined != this.returnTo) this.returnTo = returnTo;
+		this.findClient.selectFindClient();
+	}
+
+	selectAddClient(returnTo?: Function) {
+		if (undefined != this.returnTo) this.returnTo = returnTo;
+		this.addClient.selectAddClient();
 	}
 }

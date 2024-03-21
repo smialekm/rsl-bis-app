@@ -1,33 +1,17 @@
-import { MainMenuState, ClientType, Role, Rolebis } from "../../viewmodel/ViewModel";
+import { MainMenuState } from "../../viewmodel/ViewModel";
 import { UCStart } from "../../usecases/UCStart";
-import { UCFindClient } from "../../usecases/UCFindClient";
-import { UCShowClientList } from "../../usecases/UCShowClientList";
 
 export function CMainMenu(
 	state: MainMenuState,
-	start: UCStart,
-	findClient: UCFindClient,
-	showClientList: UCShowClientList
+	start: UCStart
 ) {
 	function selectFindClient() {
-		let clientType: ClientType = Object.create(state.clientType);
-		findClient.selectFindClient(clientType, start.invokedAt02);
-	}
-
-	function invokeCheckFindClient(): boolean {
-		let role: Role = Object.create(state.role);
-		return findClient.preconditionCheck(role);
+		start.selectFindClient(start.invokedAt03);
 	}
 
 	function selectShowClientList() {
-		let rolebis: Rolebis = Object.create(state.rolebis);
-		showClientList.selectShowClientList(rolebis, start.invokedAt02);
+		start.selectShowClientList(start.invokedAt03);
 	}
 
-	function invokeCheckShowClientList(): boolean {
-		let role: Role = Object.create(state.role);
-		return showClientList.preconditionCheck(role);
-	}
-
-	return [selectFindClient, invokeCheckFindClient, selectShowClientList, invokeCheckShowClientList];
+	return [selectFindClient, selectShowClientList];
 }

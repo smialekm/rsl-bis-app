@@ -16,10 +16,6 @@ export enum FindClientResultEnum {
 	NOTOK = "NOTOK"
 }
 
-export enum RoleEnum {
-	CASHIER = "CASHIER"
-}
-
 export enum ClientSearchEnum {
 	VALID = "VALID",
 	INVALID = "INVALID"
@@ -29,8 +25,8 @@ export enum AddClientResultEnum {
 	OK = "OK"
 }
 
-export enum RolebisEnum {
-	CLIENT = "CLIENT"
+export enum ClientTypeEnum {
+
 }
 
 export enum InvokeResultEnum {
@@ -46,12 +42,10 @@ export class AppState {
 }
 
 export class MainMenuState {
+	role: Role = new Role();
 }
 
 export class Role {
-}
-
-export class ClientType {
 }
 
 export class DefaultClientSearch {
@@ -82,15 +76,16 @@ export class ClientWindowState {
 export class ErrorMessageState {
 }
 
-export class Rolebis {
-}
-
 export class ClientList {
 	clients: Client[] = [];
 }
 
+export class ClientType {
+}
+
 export class ClientListFormState {
 	clientList: ClientList = new ClientList();
+	clientType: ClientType = new ClientType();
 }
 
 export class Address {
@@ -98,7 +93,7 @@ export class Address {
 	number: bigint = BigInt(0);
 }
 
-export type StartAt02UnionEnum = 
+export type StartAt03UnionEnum = 
 	ShowClientListResultEnum
 	| FindClientResultEnum
 	;
